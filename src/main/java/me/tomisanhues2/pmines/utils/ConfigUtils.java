@@ -10,7 +10,9 @@ public class ConfigUtils {
 
     public ConfigUtils() {
         upgradeLevels = List.of(
-                new UpgradeLevel(1, 100, List.of("DIRT"))
+                new UpgradeLevel(1, 100, List.of("DIRT")),
+                new UpgradeLevel(2, 200, List.of("DIRT", "STONE")),
+                new UpgradeLevel(3, 300, List.of("DIRT", "STONE", "COBBLESTONE"))
         );
     }
 
