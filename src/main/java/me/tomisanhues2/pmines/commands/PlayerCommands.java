@@ -28,4 +28,14 @@ public class PlayerCommands extends BaseCommand {
         plugin.mineManager.getMine(sender.getUniqueId()).resetMine();
         sender.sendMessage("§6§lPrivateMines §8» §7You have reset your mine!");
     }
+
+    @Subcommand("upgrade")
+    public void upgrade(Player sender) {
+        if (plugin.mineManager.getMine(sender.getUniqueId()) == null) {
+            sender.sendMessage("§6§lPrivateMines §8» §7You do not have a mine!");
+            return;
+        }
+        plugin.mineManager.getMine(sender.getUniqueId()).upgradeMine();
+        sender.sendMessage("§6§lPrivateMines §8» §7You have upgraded your mine!");
+    }
 }

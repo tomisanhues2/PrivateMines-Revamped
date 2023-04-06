@@ -4,5 +4,7 @@ main: me.tomisanhues2.pmines.PrivateMines
 author: Tomisanhues2
 api-version: "1.13"
 load: POSTWORLD
-softdepend:
-- Vault
+depend:
+  - Vault
+  - WorldEdit
+  - WorldGuard

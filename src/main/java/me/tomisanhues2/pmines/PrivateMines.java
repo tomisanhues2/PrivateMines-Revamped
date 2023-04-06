@@ -1,6 +1,11 @@
 package me.tomisanhues2.pmines;
 
 import co.aikar.commands.PaperCommandManager;
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
+import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.protection.flags.Flags;
+import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import me.tomisanhues2.pmines.cache.MineDataPersistenceHandler;
 import me.tomisanhues2.pmines.cache.MineManager;
 import me.tomisanhues2.pmines.cache.MinePersistenceHandler;
@@ -70,6 +75,10 @@ public class PrivateMines extends JavaPlugin {
         worldCreator.generator(new VoidGenerator());
         worldCreator.createWorld();
 
+        //Run a task 1 second later to make sure the world is loaded
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            ProtectedRegion global = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Bukkit.getWorld("private_mine_world"))).getRegion("__GLOBAL__");
+            }, 20);
     }
 
 }
