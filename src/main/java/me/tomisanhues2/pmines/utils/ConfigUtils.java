@@ -36,7 +36,18 @@ public class ConfigUtils {
                 new UpgradeLevel(24, 100000000, List.of("NETHERRACK", "NETHER_BRICKS")),
                 new UpgradeLevel(25, 110000000, List.of("NETHERRACK", "NETHER_BRICKS", "NETHER_QUARTZ_ORE")),
                 new UpgradeLevel(26, 120000000, List.of("END_STONE")),
-                new UpgradeLevel(27, 130000000, List.of("END_STONE", "END_STONE_BRICKS"))
+                new UpgradeLevel(27, 130000000, List.of("END_STONE", "END_STONE_BRICKS")),
+                new UpgradeLevel(28, 140000000, List.of("COAL_BLOCK")),
+                new UpgradeLevel(29, 150000000, List.of("COAL_BLOCK", "REDSTONE_BLOCK")),
+                new UpgradeLevel(30, 200000000, List.of("COAL_BLOCK", "REDSTONE_BLOCK", "LAPIS_BLOCK")),
+                new UpgradeLevel(31, 225000000, List.of("RAW_IRON_BLOCK")),
+                new UpgradeLevel(32, 250000000, List.of("RAW_IRON_BLOCK", "IRON_BLOCK")),
+                new UpgradeLevel(33, 275000000, List.of("RAW_GOLD_BLOCK")),
+                new UpgradeLevel(34, 300000000, List.of("RAW_GOLD_BLOCK", "GOLD_BLOCK")),
+                new UpgradeLevel(35, 400000000, List.of("DEEPSLATE_DIAMOND_ORE")),
+                new UpgradeLevel(36, 500000000, List.of("DEEPSLATE_DIAMOND_ORE", "DIAMOND_BLOCK")),
+                new UpgradeLevel(37, 750000000, List.of("DEEPSLATE_DIAMOND_ORE", "DIAMOND_BLOCK", "DEEPSLATE_EMERALD_ORE")),
+                new UpgradeLevel(38, 1000000000, List.of("DEEPSLATE_DIAMOND_ORE", "DIAMOND_BLOCK", "DEEPSLATE_EMERALD_ORE", "EMERALD_BLOCK"))
         );
     }
 
