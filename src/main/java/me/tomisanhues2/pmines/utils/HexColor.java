@@ -1,7 +1,7 @@
-package me.tomisanhues2.rpphones.utils;
+package me.tomisanhues2.pmines.utils;
 
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.libs.org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.Validate;
 
 import java.util.Objects;
 

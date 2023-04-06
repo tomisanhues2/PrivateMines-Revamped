@@ -1,4 +1,4 @@
-package me.tomisanhues2.rpphones.utils;
+package me.tomisanhues2.pmines.utils;
 
 import org.bukkit.ChatColor;
 

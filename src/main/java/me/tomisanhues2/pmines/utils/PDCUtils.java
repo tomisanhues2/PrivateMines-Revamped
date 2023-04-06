@@ -1,6 +1,6 @@
-package me.tomisanhues2.rpphones.utils;
+package me.tomisanhues2.pmines.utils;
 
-import me.tomisanhues2.rpphones.RPPhones;
+import me.tomisanhues2.pmines.PrivateMines;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -9,7 +9,6 @@ import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,7 +70,7 @@ public class PDCUtils {
      * @return NamespacedKey
      */
     public static NamespacedKey getKey(final String key) {
-        return KEYS.computeIfAbsent(key, __ -> new NamespacedKey(RPPhones.getInstance(), key));
+        return KEYS.computeIfAbsent(key, __ -> new NamespacedKey(PrivateMines.getInstance(), key));
     }
 
     /**
