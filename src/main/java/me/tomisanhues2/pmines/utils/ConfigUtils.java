@@ -36,7 +36,7 @@ public class ConfigUtils {
                 new UpgradeLevel(24, 100000000, List.of("NETHERRACK", "NETHER_BRICKS")),
                 new UpgradeLevel(25, 110000000, List.of("NETHERRACK", "NETHER_BRICKS", "NETHER_QUARTZ_ORE")),
                 new UpgradeLevel(26, 120000000, List.of("END_STONE")),
-                new UpgradeLevel(27, 130000000, List.of("END_STONE", "END_STONE_BRICKS")),
+                new UpgradeLevel(27, 130000000, List.of("END_STONE", "END_STONE_BRICKS"))
         );
     }
 
