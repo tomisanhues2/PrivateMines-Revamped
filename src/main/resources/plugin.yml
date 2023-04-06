@@ -1,0 +1,8 @@
+name: PrivateMines
+version: ${project.version}
+main: me.tomisanhues2.pmines.PrivateMines
+author: Tomisanhues2
+api-version: "1.13"
+load: POSTWORLD
+softdepend:
+- Vault
