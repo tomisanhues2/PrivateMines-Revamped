@@ -27,6 +27,7 @@ import org.bukkit.util.BlockVector;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.UUID;
 
 public class PrivateMine {
@@ -87,6 +88,7 @@ public class PrivateMine {
 
     public boolean resetMine() {
         fillMine();
+        Objects.requireNonNull(Bukkit.getPlayer(uuid)).teleport(teleportLocation);
         return true;
     }
 
@@ -107,5 +109,14 @@ public class PrivateMine {
             editSession.flushQueue();
         }
         return true;
+    }
+
+    public void upgradeMine() {
+        if (upgradeLevel.getTier() == 38) {
+            Bukkit.getPlayer(uuid).sendMessage("§cYou have reached the maximum upgrade level!");
+            return;
+        }
+        upgradeLevel = ConfigUtils.getUpgradeLevel(upgradeLevel.getTier() + 1);
+        resetMine();
     }
 }

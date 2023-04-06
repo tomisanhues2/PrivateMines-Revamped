@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f294d48b-d467-4c34-b743-a9276308e135" name="Changes" comment="So cool">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/utils/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/utils/ConfigUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/PrivateMines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/PrivateMines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/commands/PlayerCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/commands/PlayerCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/data/PrivateMine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/data/PrivateMine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680782529809</updated>
       <workItem from="1680782530835" duration="2599000" />
-      <workItem from="1680805156638" duration="5488000" />
+      <workItem from="1680805156638" duration="7099000" />
     </task>
     <task id="LOCAL-00001" summary="So cool">
       <created>1680810615023</created>
@@ -74,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680810615023</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="So cool">
+      <created>1680810654950</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680810654950</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
