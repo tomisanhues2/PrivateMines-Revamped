@@ -36,6 +36,6 @@ public class PlayerCommands extends BaseCommand {
             return;
         }
         plugin.mineManager.getMine(sender.getUniqueId()).upgradeMine();
-        sender.sendMessage("§6§lPrivateMines §8» §7You have upgraded your mine!");
+        sender.sendMessage("§6§lPrivateMines §8» §7You have upgraded your mine to level " + plugin.mineManager.getMine(sender.getUniqueId()).upgradeLevel.getTier() + "!)");
     }
 }

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f294d48b-d467-4c34-b743-a9276308e135" name="Changes" comment="So cool">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/utils/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/utils/ConfigUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/commands/PlayerCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/commands/PlayerCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/data/PrivateMine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/tomisanhues2/pmines/data/PrivateMine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +23,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="enabledProfiles">
@@ -66,7 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680782529809</updated>
       <workItem from="1680782530835" duration="2599000" />
-      <workItem from="1680805156638" duration="7240000" />
+      <workItem from="1680805156638" duration="8913000" />
     </task>
     <task id="LOCAL-00001" summary="So cool">
       <created>1680810615023</created>
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680812370889</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="So cool">
+      <created>1680812423561</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680812423561</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -88,7 +88,7 @@ public class PrivateMine {
 
     public boolean resetMine() {
         fillMine();
-        Objects.requireNonNull(Bukkit.getPlayer(uuid)).teleport(teleportLocation);
+        //Objects.requireNonNull(Bukkit.getPlayer(uuid)).teleport(teleportLocation);
         return true;
     }
 
@@ -97,6 +97,7 @@ public class PrivateMine {
         BlockVector3 max = region.getMaximumPoint();
 
         final RandomPattern pattern = new RandomPattern();
+        System.out.println("Upgrading mine to materials: " + upgradeLevel.getMaterials());
 
         for (Material material : upgradeLevel.getMaterials()) {
             pattern.add(BukkitAdapter.adapt(material.createBlockData()), (double) 100 / upgradeLevel.getMaterials().size());
@@ -112,11 +113,18 @@ public class PrivateMine {
     }
 
     public void upgradeMine() {
-        if (upgradeLevel.getTier() == 38) {
+        if (upgradeLevel.getTier() == 34) {
             Bukkit.getPlayer(uuid).sendMessage("§cYou have reached the maximum upgrade level!");
             return;
         }
         upgradeLevel = ConfigUtils.getUpgradeLevel(upgradeLevel.getTier() + 1);
+        BlockVector3 min =
+                BlockVector3.at(centerMineLocation.getBlockX() + upgradeLevel.getTier(), centerMineLocation.getBlockY() - 67, centerMineLocation.getBlockZ() - upgradeLevel.getTier());
+        BlockVector3 max =
+                BlockVector3.at(centerMineLocation.getBlockX() - upgradeLevel.getTier(), centerMineLocation.getBlockY(), centerMineLocation.getBlockZ() + upgradeLevel.getTier());
+
+        region = new ProtectedCuboidRegion(uuid.toString(), min, max);
+
         resetMine();
     }
 }
