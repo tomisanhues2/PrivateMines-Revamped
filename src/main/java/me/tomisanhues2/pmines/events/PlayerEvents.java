@@ -28,7 +28,12 @@ public class PlayerEvents implements Listener {
         Player player = event.getPlayer();
 
         if (plugin.mineManager.getMine(player.getUniqueId()) != null) {
-            player.sendTitle("§6§lPrivateMines", "§7Your mine has been loaded!", 10, 40, 10);
+            player.sendTitle("§6§lPrivateMines", "§7Your mine has been loaded!", 30, 80, 30);
+            return;
+        } else {
+            player.sendTitle("§6§lPrivateMines", "§7You do not have a mine, moving to queue!", 30, 80, 30);
+            player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 10000, 200));
+
         }
     }
 

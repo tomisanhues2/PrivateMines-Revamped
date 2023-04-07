@@ -58,19 +58,20 @@ public class PrivateMine {
         isPlayerOnline = true;
     }
 
-    public PrivateMine(UUID uuid, UpgradeLevel level) {
+    public PrivateMine(UUID uuid, UpgradeLevel level, Location teleportLocation, Location centerMineLocation) {
         this.uuid = uuid;
-        upgradeLevel = level;
-        autoReset = null;
-        teleportLocation = null;
-        isPlayerOnline = true;
+        this.upgradeLevel = level;
+        this.autoReset = null;
+        this.teleportLocation = teleportLocation;
+        this.centerMineLocation = centerMineLocation;
+        isPlayerOnline = false;
         pasteMine();
     }
 
 
     public boolean pasteMine() {
 
-        int totalMines = PrivateMines.getInstance().mineManager.getMineCount() + 1;
+        int totalMines = PrivateMines.getInstance().mineManager.getMineSize() + 1
 
         File schematic = new File(PrivateMines.getInstance().getDataFolder() + "/schematics/privatemine.schem");
 
@@ -88,8 +89,8 @@ public class PrivateMine {
         centerMineLocation = new Location(Bukkit.getWorld("private_mine_world"), 0, 149, (totalMines * 180) + 43);
         teleportLocation = new Location(Bukkit.getWorld("private_mine_world"), 0.5, 150, (totalMines * 180) + 0.5);
         //Run a task 1 second after the mine is created to fill it with the correct materials
+
         Bukkit.getScheduler().runTaskLaterAsynchronously(PrivateMines.getInstance(), this::fillMine, 20);
-        PrivateMines.getInstance().mineManager.mineCount++;
         return true;
     }
 
@@ -132,9 +133,9 @@ public class PrivateMine {
     public boolean resetMine() {
         fillMine();
         startTasks();
-        //teleport the player 1 second after the mine is reset
-        Bukkit.getScheduler().runTaskLaterAsynchronously(PrivateMines.getInstance(), () -> Bukkit.getPlayer(uuid).teleport(teleportLocation), 1);
         Bukkit.getPlayer(uuid).setFlying(true);
+        Bukkit.getScheduler().runTaskLater(PrivateMines.getInstance(), () -> Bukkit.getPlayer(uuid).teleport(teleportLocation), 1);
+
         return true;
     }
 
@@ -224,5 +225,13 @@ public class PrivateMine {
             }
         }
         return (double) minedBlocks / totalBlocks;
+    }
+
+    public void teleportPlayer(){
+        if (Bukkit.getPlayer(uuid).isOnline()) {
+            isPlayerOnline = true;
+            Bukkit.getPlayer(uuid).teleport(teleportLocation);
+        }
+        isPlayerOnline = false;
     }
 }

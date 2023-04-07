@@ -11,7 +11,6 @@ import java.util.UUID;
 public class MineManager {
 
     private final HashMap<UUID, PrivateMine> privateMines = new HashMap<>();
-    public int mineCount = 1;
 
     private final MinePersistenceHandler mineDataPersistenceHandler;
 
@@ -75,8 +74,8 @@ public class MineManager {
         return privateMine;
     }
 
-    public int getMineCount() {
-        return mineCount;
+    public int getMineSize() {
+        return this.privateMines.size();
     }
 
     public PrivateMine getMine(UUID uuid) {

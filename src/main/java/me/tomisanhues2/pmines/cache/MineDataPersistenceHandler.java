@@ -3,6 +3,7 @@ package me.tomisanhues2.pmines.cache;
 import me.tomisanhues2.pmines.PrivateMines;
 import me.tomisanhues2.pmines.data.PrivateMine;
 import me.tomisanhues2.pmines.data.UpgradeLevel;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -28,6 +29,8 @@ public class MineDataPersistenceHandler implements MinePersistenceHandler {
         mineDataWrite = YamlConfiguration.loadConfiguration(file);
         mineDataWrite.set("uuid", privateMine.uuid.toString());
         mineDataWrite.set("upgradeLevel", privateMine.upgradeLevel);
+        mineDataWrite.set("teleportlocation", privateMine.teleportLocation);
+        mineDataWrite.set("centerMinelocation",privateMine.centerMineLocation);
         try {
             mineDataWrite.save(file);
 
@@ -47,7 +50,9 @@ public class MineDataPersistenceHandler implements MinePersistenceHandler {
             mineDataRead = YamlConfiguration.loadConfiguration(phoneDataFile);
             UUID uuid = UUID.fromString(mineDataRead.getString("uuid"));
             UpgradeLevel upgradeLevel = (UpgradeLevel) mineDataRead.get("upgradeLevel");
-            return new PrivateMine(uuid, upgradeLevel);
+            Location teleportLocation = (Location) mineDataRead.get("teleportLocation");
+            Location centerMineLocation = (Location) mineDataRead.get("centerMineLocation");
+            return new PrivateMine(uuid, upgradeLevel, teleportLocation, centerMineLocation);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Failed to load mine data for mine with UUID " + mineUUID);
