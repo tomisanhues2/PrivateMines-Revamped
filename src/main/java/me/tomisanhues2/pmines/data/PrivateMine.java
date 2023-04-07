@@ -101,7 +101,9 @@ public class PrivateMine {
         mineRegion.setFlag(Flags.ENTRY, StateFlag.State.DENY);
         mineRegion.setFlag(Flags.ENTRY.getRegionGroupFlag(), RegionGroup.NON_OWNERS);
         mineRegion.setFlag(Flags.BLOCK_BREAK, StateFlag.State.DENY);
+        mineRegion.setFlag(Flags.BLOCK_BREAK.getRegionGroupFlag(), RegionGroup.ALL);
         mineRegion.setFlag(Flags.BLOCK_PLACE, StateFlag.State.DENY);
+        mineRegion.setFlag(Flags.BLOCK_PLACE.getRegionGroupFlag(), RegionGroup.ALL);
         WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Bukkit.getWorld("private_mine_world"))).addRegion(mineRegion);
 
 
@@ -113,7 +115,7 @@ public class PrivateMine {
         region = new ProtectedCuboidRegion(uuid.toString(), min, max);
         region.setPriority(10);
         region.setFlag(Flags.BLOCK_BREAK, StateFlag.State.ALLOW);
-        region.setFlag(Flags.BLOCK_PLACE.getRegionGroupFlag(), RegionGroup.OWNERS);
+        region.setFlag(Flags.BLOCK_BREAK.getRegionGroupFlag(), RegionGroup.OWNERS);
         region.getOwners().addPlayer(uuid);
         WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Bukkit.getWorld("private_mine_world"))).addRegion(region);
 

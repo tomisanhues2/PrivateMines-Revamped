@@ -19,6 +19,7 @@ public class MineDataPersistenceHandler implements MinePersistenceHandler {
 
     public MineDataPersistenceHandler(PrivateMines plugin) {
         this.plugin = plugin;
+
     }
 
     @Override

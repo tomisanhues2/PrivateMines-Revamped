@@ -75,9 +75,6 @@ public class PrivateMines extends JavaPlugin {
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
             mineManager.saveAllMines();
         }, 600L, 600L);
-        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
-            mineManager.loadAllMineData();
-        });
     }
 
     @Override
@@ -85,16 +82,16 @@ public class PrivateMines extends JavaPlugin {
         for (PrivateMine mine : mineManager.getMines()) {
             mineDataPersistenceHandler.saveMineData(mine);
         }
-        RegionManager container = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Bukkit.getWorld("private_mine_world")));
-        Map<String, ProtectedRegion> regions = container.getRegions();
-        for (String regionName : regions.keySet()) {
-            container.removeRegion(regionName);
-        }
-        try {
-            container.save();
-        } catch (StorageException e) {
-            throw new RuntimeException(e);
-        }
+//        RegionManager container = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Bukkit.getWorld("private_mine_world")));
+//        Map<String, ProtectedRegion> regions = container.getRegions();
+//        for (String regionName : regions.keySet()) {
+//            container.removeRegion(regionName);
+//        }
+//        try {
+//            container.save();
+//        } catch (StorageException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private void createEmptyMineWorld() {

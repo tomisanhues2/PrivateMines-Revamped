@@ -17,10 +17,11 @@ public class MineManager {
 
     public MineManager(MinePersistenceHandler mineDataPersistenceHandler) {
         this.mineDataPersistenceHandler = mineDataPersistenceHandler;
+        loadAllMineData();
     }
 
     private void addMine(PrivateMine privateMine) {
-        if (privateMines.containsValue(privateMine)) {
+        if (privateMines.containsKey(privateMine.uuid)) {
             return;
         }
         privateMines.put(privateMine.uuid, privateMine);
@@ -29,13 +30,13 @@ public class MineManager {
         privateMine.startTasks();
     }
 
-    public boolean loadMineData(UUID uuid) {
+    public void loadMineData(UUID uuid) {
         PrivateMine privateMine = mineDataPersistenceHandler.loadMineData(uuid);
         if (privateMine == null) {
-            return false;
+            return;
         }
         addMine(privateMine);
-        return true;
+        return;
     }
 
     public void unloadMineData(UUID uuid) {
