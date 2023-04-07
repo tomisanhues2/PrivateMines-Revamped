@@ -8,3 +8,4 @@ depend:
   - Vault
   - WorldEdit
   - WorldGuard
+  - PlaceholderAPI

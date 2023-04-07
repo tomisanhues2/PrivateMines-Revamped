@@ -29,4 +29,14 @@ public class AdminCommands extends BaseCommand {
         });
     }
 
+    @Subcommand("list")
+    public void listMines(Player sender) {
+        sender.sendMessage("§6§lPrivateMines §8» §7Listing all mines...");
+        Bukkit.getScheduler().runTaskAsynchronously(PrivateMines.getInstance(), () -> {
+            for (PrivateMine pm : PrivateMines.getInstance().mineManager.getMines()) {
+                sender.sendMessage("§6§lPrivateMines §8» §7" + pm.uuid + " - " + pm.upgradeLevel.getTier());
+            }
+        });
+    }
+
 }

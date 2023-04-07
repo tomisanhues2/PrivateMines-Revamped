@@ -13,7 +13,6 @@ public class MineUtils {
         PrivateMine privateMine = new PrivateMine(uuid);
         privateMine.pasteMine();
 
-
         plugin.mineManager.createNewMine(privateMine);
         return privateMine;
     }

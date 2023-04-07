@@ -2,6 +2,7 @@ package me.tomisanhues2.pmines.cache;
 
 import me.tomisanhues2.pmines.PrivateMines;
 import me.tomisanhues2.pmines.data.PrivateMine;
+import me.tomisanhues2.pmines.data.UpgradeLevel;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -22,31 +23,33 @@ public class MineDataPersistenceHandler implements MinePersistenceHandler {
 
     @Override
     public void saveMineData(PrivateMine privateMine) {
-        File file = new File(plugin.getDataFolder(), privateMine.uuid.toString() + ".yml");
+        File file = new File(plugin.getDataFolder(),"mineData/" + privateMine.uuid.toString() + ".yml");
         mineDataWrite = YamlConfiguration.loadConfiguration(file);
-
-        //TODO set all the fields
+        mineDataWrite.set("uuid", privateMine.uuid.toString());
+        mineDataWrite.set("upgradeLevel", privateMine.upgradeLevel);
         try {
             mineDataWrite.save(file);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public PrivateMine loadMineData(UUID phoneUUID) {
+    public PrivateMine loadMineData(UUID mineUUID) {
         try {
-            File phoneDataFile = new File(plugin.getDataFolder(), "mineData/" + phoneUUID + ".yml");
+            File phoneDataFile = new File(plugin.getDataFolder(), "mineData/" + mineUUID + ".yml");
             if (!phoneDataFile.exists()) {
-                System.out.println("Failed to load mine data for mine with UUID " + phoneUUID);
+                System.out.println("Failed to load mine data for mine with UUID " + mineUUID);
                 return null;
             }
             mineDataRead = YamlConfiguration.loadConfiguration(phoneDataFile);
-
-            return null;
+            UUID uuid = UUID.fromString(mineDataRead.getString("uuid"));
+            UpgradeLevel upgradeLevel = (UpgradeLevel) mineDataRead.get("upgradeLevel");
+            return new PrivateMine(uuid, upgradeLevel);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Failed to load mine data for mine with UUID " + phoneUUID);
+            System.out.println("Failed to load mine data for mine with UUID " + mineUUID);
             return null;
         }
     }
