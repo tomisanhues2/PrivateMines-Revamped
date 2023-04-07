@@ -62,6 +62,12 @@ public class MineManager {
         }
     }
 
+    public void saveAllMines() {
+        for (PrivateMine privateMine : privateMines.values()) {
+            mineDataPersistenceHandler.saveMineData(privateMine);
+        }
+    }
+
     public PrivateMine createNewMine(PrivateMine privateMine) {
 
         addMine(privateMine);

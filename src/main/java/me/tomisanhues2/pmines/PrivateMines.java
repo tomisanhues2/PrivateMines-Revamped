@@ -70,14 +70,14 @@ public class PrivateMines extends JavaPlugin {
         acf.registerCommand(new AdminCommands());
         acf.registerCommand(new PlayerCommands());
 
+        getServer().getPluginManager().registerEvents(new PlayerEvents(this), this);
         //Run a task 5 seconds later to make sure the world is loaded
-        Bukkit.getScheduler().runTaskLater(this, () -> {
-        }, 100);
-
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
-            System.out.println(mineManager.getMineCount());
-        },20L, 20L);
-
+            mineManager.saveAllMines();
+        }, 600L, 600L);
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            mineManager.loadAllMineData();
+        });
     }
 
     @Override
@@ -99,17 +99,9 @@ public class PrivateMines extends JavaPlugin {
 
     private void createEmptyMineWorld() {
         //Check if the world already exists
-        try {
-            FileUtils.deleteDirectory(new File("private_mine_world"));
-            System.out.println("Deleted old world");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         WorldCreator worldCreator = new WorldCreator("private_mine_world");
         worldCreator.generator(new VoidGenerator());
         worldCreator.createWorld();
-
-        getServer().getPluginManager().registerEvents(new PlayerEvents(this), this);
 
         //Run a task 1 second later to make sure the world is loaded
         Bukkit.getScheduler().runTaskLater(this, () -> {

@@ -22,24 +22,13 @@ public class PlayerEvents implements Listener {
     public PlayerEvents(PrivateMines plugin) {
         this.plugin = plugin;
     }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.getWorld() != Bukkit.getWorld("Spawn"))
-            player.teleport(Bukkit.getWorld("Spawn").getSpawnLocation());
 
-
-        if (plugin.mineManager.getMine(player.getUniqueId()) != null)
-            player.sendMessage("§6§lPrivateMines §8» §7Your mine has been loaded!");
-
-        if (new File(plugin.getDataFolder(), "mineData/" + player.getUniqueId() + ".yml").exists()) {
-            player.sendMessage("§6§lPrivateMines §8» §7You have a mine! Wait for it to load...");
-        } else {
-            Bukkit.getScheduler().runTaskAsynchronously(PrivateMines.getInstance(), () -> {
-                if (plugin.mineManager.loadMineData(player.getUniqueId())) {
-                    player.sendMessage("§6§lPrivateMines §8» §7Your mine has been loaded!");
-                }
-            });
+        if (plugin.mineManager.getMine(player.getUniqueId()) != null) {
+            player.sendTitle("§6§lPrivateMines", "§7Your mine has been loaded!", 10, 40, 10);
         }
     }
 
@@ -58,7 +47,11 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void onPlayerPreCommand(PlayerCommandPreprocessEvent event) {
-        if (plugin.mineManager.getMine(event.getPlayer().getUniqueId()) == null)
-            event.setCancelled(true);
+        if (event.getMessage().contains("pmine") || event.getMessage().contains("pmines") || event.getMessage().contains("mine") || event.getMessage().contains("mines")) {
+            if (plugin.mineManager.getMine(event.getPlayer().getUniqueId()) == null) {
+                event.setCancelled(true);
+                event.getPlayer().sendMessage("§6§lPrivateMines §8» §7You cannot use this command until you have a mine!");
+            }
+        }
     }
 }

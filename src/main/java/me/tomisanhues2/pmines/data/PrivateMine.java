@@ -172,9 +172,11 @@ public class PrivateMine {
         BlockVector3 max = region.getMaximumPoint();
 
         final RandomPattern pattern = new RandomPattern();
-
+        int percentage = (int) Math.round(100.0 / upgradeLevel.getMaterials().size());
         for (Material material : upgradeLevel.getMaterials()) {
-            pattern.add(BukkitAdapter.adapt(material.createBlockData()), (double) 100 / upgradeLevel.getMaterials().size());
+            //Divide 100 by the amount of materials to get the percentage of each material
+            //Make sure to round to the nearest integer
+            pattern.add(BukkitAdapter.adapt(material.createBlockData()), percentage);
         }
 
         Region region = new CuboidRegion(min, max);
